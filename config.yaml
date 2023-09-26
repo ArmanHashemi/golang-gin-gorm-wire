@@ -1,0 +1,51 @@
+---
+Server:
+  grpc:
+    port: 50051
+    host: "localhost"
+    production: false
+  http:
+    port: 8080
+    host: "localhost"
+    production: true
+Service:
+  scheduler:
+    enabled: false
+    interval: "3s"
+
+    
+
+datasource:
+  redis:
+    enabled: false
+    host: "localhost"
+    port: 6379
+    password: ""
+    db: 0
+  sqlite:
+    enabled: false
+    dns: "file:/tmp/go_test.db?cache=shared&mode=rwc"
+  mysql:
+    dns: "root:@tcp(localhost:3306)/go_test?charset=utf8mb4&parseTime=True&loc=UTC"
+    enabled: true
+  pgsql:
+    host: "localhost"
+    port: 5432
+    username: "user"
+    password: "password"
+    database: "db"
+    enabled: true
+observability:
+  tracing:
+    enabled: true
+    zipkin:
+      url: "http://localhost:9411/api/v2/spans"
+      service_name: "greeter"
+  metrics:
+    prometheus:
+      port: 9090
+      host: "localhost"
+      path: "/metrics"
+  logging:
+    level: "debug"
+
